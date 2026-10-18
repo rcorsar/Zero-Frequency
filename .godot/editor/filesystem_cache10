@@ -1,0 +1,12 @@
+78098b89c88a74ebe8c20117b8754620
+::res://::1792349713
+::res://assets/::1792347155
+::res://assets/audio/::1792347155
+::res://assets/sprites/::1792347147
+::res://scenes/::1792347168
+LobbyRoom.tscn::PackedScene::-1::1792349673::0::1::::<><><>0<>0<><>::res://scripts/LobbyRoom.gd<>res://scripts/Konstantin.gd<>res://scripts/InteractiveProp.gd
+::res://scripts/::1792347394
+GameState.gd::GDScript::2629389530830480829::1792349650::0::1::::<>Node<><>0<>0<><>::
+InteractiveProp.gd::GDScript::1679393852219559181::1792349655::0::1::::<>Area2D<><>0<>0<><>::
+Konstantin.gd::GDScript::3642381452414499756::1792347239::0::1::::<>Node2D<><>0<>0<><>::
+LobbyRoom.gd::GDScript::3823523833592338838::1792349662::0::1::::<>Node2D<><>0<>0<><>::

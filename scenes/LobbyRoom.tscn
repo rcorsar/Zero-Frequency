@@ -1,0 +1,551 @@
+[gd_scene load_steps=6 format=3 uid="uid://b1zero_freq_lobby"]
+
+[ext_resource type="Script" path="res://scripts/LobbyRoom.gd" id="1_room"]
+[ext_resource type="Script" path="res://scripts/Konstantin.gd" id="2_player"]
+[ext_resource type="Script" path="res://scripts/InteractiveProp.gd" id="3_prop"]
+
+[sub_resource type="RectangleShape2D" id="Shape_NPC"]
+size = Vector2(150, 260)
+
+[sub_resource type="RectangleShape2D" id="Shape_Door"]
+size = Vector2(170, 320)
+
+[node name="LobbyRoom" type="Node2D"]
+script = ExtResource("1_room")
+
+[node name="RoomBackground" type="ColorRect" parent="."]
+offset_right = 1920.0
+offset_bottom = 1080.0
+mouse_filter = 2
+color = Color(0.24, 0.25, 0.22, 1)
+
+[node name="Floor" type="ColorRect" parent="."]
+offset_top = 820.0
+offset_right = 1920.0
+offset_bottom = 1080.0
+mouse_filter = 2
+color = Color(0.16, 0.14, 0.12, 1)
+
+[node name="DarkOverlay" type="ColorRect" parent="."]
+visible = false
+offset_right = 1920.0
+offset_bottom = 820.0
+mouse_filter = 2
+color = Color(0.05, 0.05, 0.07, 0.45)
+
+[node name="Room_Reception" type="Node2D" parent="."]
+
+[node name="DoorToExit" type="Area2D" parent="Room_Reception"]
+position = Vector2(260, 660)
+script = ExtResource("3_prop")
+prop_id = "door_to_exit"
+
+[node name="Visual" type="ColorRect" parent="Room_Reception/DoorToExit"]
+offset_left = -85.0
+offset_top = -160.0
+offset_right = 85.0
+offset_bottom = 160.0
+mouse_filter = 2
+color = Color(0.28, 0.18, 0.12, 1)
+
+[node name="Label" type="Label" parent="Room_Reception/DoorToExit"]
+offset_left = -80.0
+offset_top = -20.0
+offset_right = 80.0
+offset_bottom = 20.0
+text = "⬅ К ВЫХОДУ"
+horizontal_alignment = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Room_Reception/DoorToExit"]
+shape = SubResource("Shape_Door")
+
+[node name="NursesProp" type="Area2D" parent="Room_Reception"]
+position = Vector2(960, 690)
+script = ExtResource("3_prop")
+prop_id = "nurses"
+
+[node name="Visual" type="ColorRect" parent="Room_Reception/NursesProp"]
+offset_left = -75.0
+offset_top = -130.0
+offset_right = 75.0
+offset_bottom = 130.0
+mouse_filter = 2
+color = Color(0.75, 0.78, 0.76, 1)
+
+[node name="Label" type="Label" parent="Room_Reception/NursesProp"]
+offset_left = -70.0
+offset_top = -25.0
+offset_right = 70.0
+offset_bottom = 25.0
+theme_override_colors/font_color = Color(0.1, 0.1, 0.1, 1)
+text = "МЕДСЕСТРЫ"
+horizontal_alignment = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Room_Reception/NursesProp"]
+shape = SubResource("Shape_NPC")
+
+[node name="DoorToWard" type="Area2D" parent="Room_Reception"]
+position = Vector2(1640, 660)
+script = ExtResource("3_prop")
+prop_id = "door_to_ward"
+
+[node name="Visual" type="ColorRect" parent="Room_Reception/DoorToWard"]
+offset_left = -85.0
+offset_top = -160.0
+offset_right = 85.0
+offset_bottom = 160.0
+mouse_filter = 2
+color = Color(0.32, 0.24, 0.18, 1)
+
+[node name="Label" type="Label" parent="Room_Reception/DoorToWard"]
+offset_left = -80.0
+offset_top = -20.0
+offset_right = 80.0
+offset_bottom = 20.0
+text = "ПАЛАТА №6 ➡"
+horizontal_alignment = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Room_Reception/DoorToWard"]
+shape = SubResource("Shape_Door")
+
+[node name="Room_Ward" type="Node2D" parent="."]
+visible = false
+
+[node name="DoorBackReception" type="Area2D" parent="Room_Ward"]
+position = Vector2(220, 660)
+script = ExtResource("3_prop")
+prop_id = "door_back_reception"
+
+[node name="Visual" type="ColorRect" parent="Room_Ward/DoorBackReception"]
+offset_left = -85.0
+offset_top = -160.0
+offset_right = 85.0
+offset_bottom = 160.0
+mouse_filter = 2
+color = Color(0.32, 0.24, 0.18, 1)
+
+[node name="Label" type="Label" parent="Room_Ward/DoorBackReception"]
+offset_left = -80.0
+offset_top = -20.0
+offset_right = 80.0
+offset_bottom = 20.0
+text = "⬅ ПРИЕМНАЯ"
+horizontal_alignment = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Room_Ward/DoorBackReception"]
+shape = SubResource("Shape_Door")
+
+[node name="GrandpaBedProp" type="Area2D" parent="Room_Ward"]
+position = Vector2(580, 730)
+script = ExtResource("3_prop")
+prop_id = "grandpa_bed"
+
+[node name="Visual" type="ColorRect" parent="Room_Ward/GrandpaBedProp"]
+offset_left = -95.0
+offset_top = -70.0
+offset_right = 95.0
+offset_bottom = 90.0
+mouse_filter = 2
+color = Color(0.45, 0.42, 0.38, 1)
+
+[node name="Label" type="Label" parent="Room_Ward/GrandpaBedProp"]
+offset_left = -90.0
+offset_top = -20.0
+offset_right = 90.0
+offset_bottom = 20.0
+text = "КОЙКА ДЕДУШКИ
+(ПУСТО)"
+horizontal_alignment = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Room_Ward/GrandpaBedProp"]
+shape = SubResource("Shape_NPC")
+
+[node name="RoommateProp" type="Area2D" parent="Room_Ward"]
+position = Vector2(960, 690)
+script = ExtResource("3_prop")
+prop_id = "roommate"
+
+[node name="Visual" type="ColorRect" parent="Room_Ward/RoommateProp"]
+offset_left = -70.0
+offset_top = -130.0
+offset_right = 70.0
+offset_bottom = 130.0
+mouse_filter = 2
+color = Color(0.35, 0.38, 0.42, 1)
+
+[node name="Label" type="Label" parent="Room_Ward/RoommateProp"]
+offset_left = -70.0
+offset_top = -20.0
+offset_right = 70.0
+offset_bottom = 20.0
+text = "СОСЕД ИГНАТ"
+horizontal_alignment = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Room_Ward/RoommateProp"]
+shape = SubResource("Shape_NPC")
+
+[node name="GranniesProp" type="Area2D" parent="Room_Ward"]
+position = Vector2(1300, 690)
+script = ExtResource("3_prop")
+prop_id = "grannies"
+
+[node name="Visual" type="ColorRect" parent="Room_Ward/GranniesProp"]
+offset_left = -75.0
+offset_top = -130.0
+offset_right = 75.0
+offset_bottom = 130.0
+mouse_filter = 2
+color = Color(0.42, 0.32, 0.38, 1)
+
+[node name="Label" type="Label" parent="Room_Ward/GranniesProp"]
+offset_left = -70.0
+offset_top = -20.0
+offset_right = 70.0
+offset_bottom = 20.0
+text = "БАБУШКИ"
+horizontal_alignment = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Room_Ward/GranniesProp"]
+shape = SubResource("Shape_NPC")
+
+[node name="DoorToBathroom" type="Area2D" parent="Room_Ward"]
+position = Vector2(1680, 660)
+script = ExtResource("3_prop")
+prop_id = "door_to_bathroom"
+
+[node name="Visual" type="ColorRect" parent="Room_Ward/DoorToBathroom"]
+offset_left = -85.0
+offset_top = -160.0
+offset_right = 85.0
+offset_bottom = 160.0
+mouse_filter = 2
+color = Color(0.22, 0.32, 0.34, 1)
+
+[node name="Label" type="Label" parent="Room_Ward/DoorToBathroom"]
+offset_left = -80.0
+offset_top = -20.0
+offset_right = 80.0
+offset_bottom = 20.0
+text = "ТУАЛЕТ ➡"
+horizontal_alignment = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Room_Ward/DoorToBathroom"]
+shape = SubResource("Shape_Door")
+
+[node name="Room_Bathroom" type="Node2D" parent="."]
+visible = false
+
+[node name="DoorBackWard" type="Area2D" parent="Room_Bathroom"]
+position = Vector2(260, 660)
+script = ExtResource("3_prop")
+prop_id = "door_Bathroom_to_ward"
+
+[node name="Visual" type="ColorRect" parent="Room_Bathroom/DoorBackWard"]
+offset_left = -85.0
+offset_top = -160.0
+offset_right = 85.0
+offset_bottom = 160.0
+mouse_filter = 2
+color = Color(0.22, 0.32, 0.34, 1)
+
+[node name="Label" type="Label" parent="Room_Bathroom/DoorBackWard"]
+offset_left = -80.0
+offset_top = -20.0
+offset_right = 80.0
+offset_bottom = 20.0
+text = "⬅ В ПАЛАТУ"
+horizontal_alignment = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Room_Bathroom/DoorBackWard"]
+shape = SubResource("Shape_Door")
+
+[node name="SinkProp" type="Area2D" parent="Room_Bathroom"]
+position = Vector2(820, 700)
+script = ExtResource("3_prop")
+prop_id = "sink"
+
+[node name="Visual" type="ColorRect" parent="Room_Bathroom/SinkProp"]
+offset_left = -70.0
+offset_top = -110.0
+offset_right = 70.0
+offset_bottom = 110.0
+mouse_filter = 2
+color = Color(0.65, 0.7, 0.72, 1)
+
+[node name="Label" type="Label" parent="Room_Bathroom/SinkProp"]
+offset_left = -65.0
+offset_top = -20.0
+offset_right = 65.0
+offset_bottom = 20.0
+theme_override_colors/font_color = Color(0.1, 0.1, 0.1, 1)
+text = "РАКОВИНА
+(УМЫТЬСЯ)"
+horizontal_alignment = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Room_Bathroom/SinkProp"]
+shape = SubResource("Shape_NPC")
+
+[node name="ToiletClimbProp" type="Area2D" parent="Room_Bathroom"]
+position = Vector2(1340, 650)
+script = ExtResource("3_prop")
+prop_id = "toilet_climb"
+
+[node name="VentVisual" type="ColorRect" parent="Room_Bathroom/ToiletClimbProp"]
+offset_left = -80.0
+offset_top = -420.0
+offset_right = 80.0
+offset_bottom = -320.0
+mouse_filter = 2
+color = Color(0.12, 0.12, 0.14, 1)
+
+[node name="VentLabel" type="Label" parent="Room_Bathroom/ToiletClimbProp"]
+offset_left = -90.0
+offset_top = -385.0
+offset_right = 90.0
+offset_bottom = -345.0
+text = "ЛЮК В ПОТОЛКЕ"
+horizontal_alignment = 1
+
+[node name="Visual" type="ColorRect" parent="Room_Bathroom/ToiletClimbProp"]
+offset_left = -70.0
+offset_top = -90.0
+offset_right = 70.0
+offset_bottom = 170.0
+mouse_filter = 2
+color = Color(0.55, 0.58, 0.6, 1)
+
+[node name="Label" type="Label" parent="Room_Bathroom/ToiletClimbProp"]
+offset_left = -70.0
+offset_top = -10.0
+offset_right = 70.0
+offset_bottom = 40.0
+theme_override_colors/font_color = Color(0.1, 0.1, 0.1, 1)
+text = "ЗАЛЕЗТЬ И
+ПОСМОТРЕТЬ ВВЕРХ"
+horizontal_alignment = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Room_Bathroom/ToiletClimbProp"]
+shape = SubResource("Shape_Door")
+
+[node name="Room_ExitHall" type="Node2D" parent="."]
+visible = false
+
+[node name="ForestExitProp" type="Area2D" parent="Room_ExitHall"]
+position = Vector2(340, 660)
+script = ExtResource("3_prop")
+prop_id = "forest_exit"
+
+[node name="Visual" type="ColorRect" parent="Room_ExitHall/ForestExitProp"]
+offset_left = -95.0
+offset_top = -165.0
+offset_right = 95.0
+offset_bottom = 165.0
+mouse_filter = 2
+color = Color(0.15, 0.24, 0.18, 1)
+
+[node name="Label" type="Label" parent="Room_ExitHall/ForestExitProp"]
+offset_left = -85.0
+offset_top = -25.0
+offset_right = 85.0
+offset_bottom = 25.0
+text = "⬅ УЙТИ В ЛЕС
+К МАЯКУ"
+horizontal_alignment = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Room_ExitHall/ForestExitProp"]
+shape = SubResource("Shape_Door")
+
+[node name="ManInWhiteProp" type="Area2D" parent="Room_ExitHall"]
+position = Vector2(960, 680)
+script = ExtResource("3_prop")
+prop_id = "man_in_white"
+
+[node name="Visual" type="ColorRect" parent="Room_ExitHall/ManInWhiteProp"]
+offset_left = -75.0
+offset_top = -140.0
+offset_right = 75.0
+offset_bottom = 140.0
+mouse_filter = 2
+color = Color(0.96, 0.96, 0.98, 1)
+
+[node name="Label" type="Label" parent="Room_ExitHall/ManInWhiteProp"]
+offset_left = -70.0
+offset_top = -25.0
+offset_right = 70.0
+offset_bottom = 25.0
+theme_override_colors/font_color = Color(0.05, 0.05, 0.05, 1)
+text = "ЧЕЛОВЕК
+В БЕЛОМ"
+horizontal_alignment = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Room_ExitHall/ManInWhiteProp"]
+shape = SubResource("Shape_NPC")
+
+[node name="DoorBackToReception" type="Area2D" parent="Room_ExitHall"]
+position = Vector2(1620, 660)
+script = ExtResource("3_prop")
+prop_id = "door_back_reception"
+
+[node name="Visual" type="ColorRect" parent="Room_ExitHall/DoorBackToReception"]
+offset_left = -85.0
+offset_top = -160.0
+offset_right = 85.0
+offset_bottom = 160.0
+mouse_filter = 2
+color = Color(0.28, 0.18, 0.12, 1)
+
+[node name="Label" type="Label" parent="Room_ExitHall/DoorBackToReception"]
+offset_left = -80.0
+offset_top = -20.0
+offset_right = 80.0
+offset_bottom = 20.0
+text = "В ПРИЕМНУЮ ➡"
+horizontal_alignment = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Room_ExitHall/DoorBackToReception"]
+shape = SubResource("Shape_Door")
+
+[node name="Konstantin" type="Node2D" parent="."]
+position = Vector2(600, 720)
+script = ExtResource("2_player")
+
+[node name="Visual" type="Node2D" parent="Konstantin"]
+
+[node name="Body" type="ColorRect" parent="Konstantin/Visual"]
+offset_left = -45.0
+offset_top = -110.0
+offset_right = 45.0
+offset_bottom = 100.0
+mouse_filter = 2
+color = Color(0.15, 0.18, 0.24, 1)
+
+[node name="Head" type="ColorRect" parent="Konstantin/Visual"]
+offset_left = -35.0
+offset_top = -180.0
+offset_right = 35.0
+offset_bottom = -110.0
+mouse_filter = 2
+color = Color(0.85, 0.78, 0.7, 1)
+
+[node name="NameTag" type="Label" parent="Konstantin"]
+offset_left = -60.0
+offset_top = -215.0
+offset_right = 60.0
+offset_bottom = -185.0
+text = "Константин"
+horizontal_alignment = 1
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="RoomTitleLabel" type="Label" parent="UI"]
+offset_left = 40.0
+offset_top = 25.0
+offset_right = 950.0
+offset_bottom = 70.0
+theme_override_font_sizes/font_size = 24
+text = "ПРИЕМНЫЙ ПОКОЙ ПАНСИОНАТА «ОМУТ»"
+
+[node name="WatchPanel" type="Panel" parent="UI"]
+visible = false
+offset_left = 1180.0
+offset_top = 20.0
+offset_right = 1880.0
+offset_bottom = 155.0
+
+[node name="HeartVisual" type="ColorRect" parent="UI/WatchPanel"]
+layout_mode = 0
+offset_left = 25.0
+offset_top = 35.0
+offset_right = 85.0
+offset_bottom = 95.0
+pivot_offset = Vector2(30, 30)
+color = Color(0.85, 0.12, 0.18, 1)
+
+[node name="WatchStatusLabel" type="Label" parent="UI/WatchPanel"]
+layout_mode = 0
+offset_left = 105.0
+offset_top = 15.0
+offset_right = 680.0
+offset_bottom = 50.0
+theme_override_font_sizes/font_size = 19
+text = "Часы Серафима: СЕРДЦЕ БЬЕТСЯ"
+
+[node name="ToggleWatchBtn" type="Button" parent="UI/WatchPanel"]
+layout_mode = 0
+offset_left = 105.0
+offset_top = 55.0
+offset_right = 680.0
+offset_bottom = 95.0
+text = "Нажать головку часов"
+
+[node name="InspectBackBtn" type="Button" parent="UI/WatchPanel"]
+layout_mode = 0
+offset_left = 105.0
+offset_top = 102.0
+offset_right = 680.0
+offset_bottom = 142.0
+text = "🔍 Осмотреть заднюю крышку часов"
+
+[node name="SubtitlePanel" type="Panel" parent="UI"]
+offset_left = 140.0
+offset_top = 890.0
+offset_right = 1780.0
+offset_bottom = 1040.0
+
+[node name="SubtitleLabel" type="Label" parent="UI/SubtitlePanel"]
+layout_mode = 0
+offset_left = 25.0
+offset_top = 18.0
+offset_right = 1615.0
+offset_bottom = 132.0
+theme_override_font_sizes/font_size = 22
+text = "..."
+autowrap_mode = 2
+
+[node name="DialogueModal" type="Panel" parent="UI"]
+visible = false
+offset_left = 360.0
+offset_top = 180.0
+offset_right = 1560.0
+offset_bottom = 640.0
+
+[node name="NpcTitle" type="Label" parent="UI/DialogueModal"]
+layout_mode = 0
+offset_left = 30.0
+offset_top = 20.0
+offset_right = 1170.0
+offset_bottom = 60.0
+theme_override_font_sizes/font_size = 26
+text = "Персонаж"
+
+[node name="NpcSpeech" type="Label" parent="UI/DialogueModal"]
+layout_mode = 0
+offset_left = 30.0
+offset_top = 75.0
+offset_right = 1170.0
+offset_bottom = 210.0
+theme_override_font_sizes/font_size = 22
+text = "..."
+autowrap_mode = 2
+
+[node name="VBoxOptions" type="VBoxContainer" parent="UI/DialogueModal"]
+layout_mode = 0
+offset_left = 30.0
+offset_top = 230.0
+offset_right = 1170.0
+offset_bottom = 430.0
+theme_override_constants/separation = 14
+
+[node name="Opt1" type="Button" parent="UI/DialogueModal/VBoxOptions"]
+layout_mode = 2
+text = "Вопрос 1"
+alignment = 0
+
+[node name="Opt2" type="Button" parent="UI/DialogueModal/VBoxOptions"]
+layout_mode = 2
+text = "Вопрос 2"
+alignment = 0
+
+[node name="OptClose" type="Button" parent="UI/DialogueModal/VBoxOptions"]
+layout_mode = 2
+text = "[Закончить разговор]"
